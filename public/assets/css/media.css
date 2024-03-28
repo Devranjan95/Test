@@ -1,0 +1,8 @@
+@media only screen and (min-width: 768px) and (max-width: 900px) {
+  .header {
+    background-image: url("../images/navbackTab.png");
+  }
+  .modal-header{
+    background-image: url("../images/modalheadTab.png");
+  }
+}

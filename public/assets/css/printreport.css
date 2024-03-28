@@ -1,0 +1,193 @@
+.report-content{
+    border: 1px solid black;
+    padding: 9px;
+    /* box-shadow: 10px 10px 10px #888888; */
+    margin: 10px;
+  }
+  .report-header{
+    border: 0px solid black;
+    height: 150px;
+    
+  }
+  .underline {
+   /* Adjust the color and size as needed */
+    display: inline-block;
+    padding-bottom: 2px; /* Optional: Adjust the padding for better spacing */
+    margin-bottom: -1px; /* Optional: Adjust the margin for better spacing */
+}
+  .report-body{
+    /* margin-top: 80px; */
+    border: 0px solid black;
+    height: auto;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    /* transform: rotate(-50deg); */
+    color: grey;
+    text-transform: uppercase;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  .report-sign{
+    border: 0px solid black;
+    height: 100px;
+    margin: 30px 30px;
+     
+  }
+  .report-footer{
+    border: 0px solid black;
+    height: 100px;
+  }
+
+  .lab-doctor-sign{
+    float: right;
+     
+  }
+  .report-sign img{
+    height: 50px;
+    width: 100px;
+     display: inline-block;
+  }
+  .lab-incharge-sign{
+     display: inline-block;
+     margin-left:-5px
+  }
+  
+/* hr{      margin: 0 0; 
+padding: 0;
+border-bottom: 2px solid #212529;
+border-top: 0;
+}  */
+
+.button {
+        width: 100%;
+        height: 40px;
+        background: green;
+        color: #fff;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    button:hover {
+        background: #228b22;
+    }
+
+    @media print {
+      body {
+    font-size: 15px; /* Adjust font size */
+    margin: 2px; /* Adjust margin for better spacing */
+    color: #000;
+}
+.report-content{
+  
+  height:990px;
+  margin-top:-20px;
+}
+.page-break {
+  page-break-before: always;
+  
+}
+.summary p{
+  padding-bottom:0px;
+  font-size:11px;
+  font-weight: 500;
+}
+#hname{
+    font-size:18px;
+    font-weight:700
+}
+.patient-details{
+    margin-left:20px
+}
+.underline {
+    
+    display: inline-block;
+    padding-bottom: 2px; /* Optional: Adjust the padding for better spacing */
+    margin-bottom: -1px; /* Optional: Adjust the margin for better spacing */
+    font-style: italic;
+    font-weight: 500;
+}
+.card-style{
+    /* background:#fff;
+    border:none;
+    margin-top:-30px;
+    margin-left:-10px;
+    width:100% */
+    display:none;
+}
+hr{
+    display:none;
+}
+.header{
+    display:none;
+}
+.headingcolor{
+    display:none;
+}
+#dispatchform{
+    display:none;
+}
+
+/* Adjust font sizes for specific elements if needed */
+h1, h3,h5, td {
+    font-size: 16px;
+}
+
+
+.pname {
+         /* Adjust font size for pname */
+         font-size:13px;
+         font-weight:600;
+         padding-bottom:0px;
+    }
+.hright{
+  width:'400px';
+  font-size:13px;
+  font-weight:600;
+  
+}
+
+.patient-details .pattable td {
+    border-right: 1px solid #000; /* Adjust the color and size as needed */
+    padding: 5px; /* Optional: Adjust the padding for better spacing */
+}
+
+.patient-details .pattable td:last-child {
+    border-right: none; /* Remove the right border for the last td in each row */
+}
+.lab-incharge-sign{
+     display: inline-block;
+     margin-left:-25px
+  }
+  .lab-doctor-sign{
+    display: inline-block;
+     /* margin-right:25px */
+  }
+  .headtable{
+    margin-top:-25px
+  }
+  .pattable{
+    margin-top:-20px
+  }
+
+li{
+  font-size:12px;
+  padding:8px
+}
+.headtable{
+    margin-left:70px
+}
+.footer{
+  display:none;
+}
+
+
+/* .page-break {
+    page-break-before: always;
+    
+} */
+
+.button {
+    display: none;
+}
+}
+  
