@@ -10,6 +10,9 @@ use App\Models\TestEntry;
 use App\Models\TestSubCategory;
 use App\Models\TestCategory;
 use Illuminate\Support\Facades\Auth;
+use Session;
+use App\Models\User;
+
 
 class DashboardController extends Controller
 {
@@ -17,7 +20,9 @@ class DashboardController extends Controller
     //     $this->middleware('authnew');
     // }
     public function index(){
-       
+        $data = array();
+        if(Session::has('loginId')){
+            $data = User::where('id','=',Session::get('loginId'))->first();
             $currentDate = Carbon::now()->toDateString(); 
 
             $registeredCount = Token::where('status', 'Registration Completed')
@@ -49,10 +54,11 @@ class DashboardController extends Controller
                     'patname' => $patname,
                     'category' => $testcat,
                     'subcat' => $testsubcat,
-                    'test' => $testname
+                    'test' => $testname,
+                    'data'=>$data
                 ];
             }
-            
+        }
             return view('backend.dashboard', [
                 'tokinfo' => $tokinfo,
                 'oinfo' => $oinfo,

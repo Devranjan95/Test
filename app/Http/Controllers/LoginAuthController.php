@@ -19,28 +19,29 @@ class LoginAuthController extends Controller
 
 
     public function checkLogin(Request $request)
-    {
-        $user = $request->username;
-        $password = $request->password;
-        $check = User::where('user_name', $user)->first();
-        // print($check->id);
-        // exit;
+{
+    $user = $request->input('username');
+    $password = $request->input('password');
+    $check = User::where('user_name', $user)->first();
+    
+    if($check){
         
+            $request->session()->put('loginId', $check->id);
+            return redirect('dashboard');
         
-        if ($check && Hash::check($password, $check->password)) {
-            return redirect()->route('dashboard')->with('success', 'Login Successful');
-        } else {
-            Session::flash('error', 'Wrong Username Or Password. Please check and try again.');
-            return redirect()->back();
-        }
-    }
+    } else {
+        return back()->with('fail','This username is not registered.');
+    }       
+}
 
 
     public function logout()
     {
-        Auth::logout(); // Log out the user
-        Session::flash('success', 'Logged out successfully.');
-        return redirect()->route('login');
+        $data = array();
+        if(Session::has('loginId')){
+            Session::pull('loginId');
+            return redirect()->route('login');
+        }
     }
 
     // public function checkLogin(Request $request){

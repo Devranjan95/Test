@@ -74,14 +74,14 @@ Route::get('user/delete/{id}', [UserController::class, 'deleteUser']);
     //::get('/dashboard', [DashboardController::class,'index'])->name('dashboard')->middleware('auth');
 //});
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('isLoggedIn');
     // Add more authenticated routes here
 
 // Your login route
 // Route::get('/login', [LoginAuthController::class,'index'])->name('login');
 // Route::post('/login', [LoginAuthController::class,'checkLogin'])->name('login.check');
 
-Route::get('/login', [LoginAuthController::class, 'index']);
+Route::get('/login', [LoginAuthController::class, 'index'])->name('login')->middleware('alreadyLoggedIn');
 Route::post('/login', [LoginAuthController::class, 'checkLogin']);
 //Auth::routes();
 
