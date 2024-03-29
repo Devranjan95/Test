@@ -16,9 +16,7 @@ use App\Models\User;
 
 class DashboardController extends Controller
 {
-    // public function __construct(){
-    //     $this->middleware('authnew');
-    // }
+    
     public function index(){
         $data = array();
         if(Session::has('loginId')){
