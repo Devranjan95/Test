@@ -18,20 +18,38 @@ class LoginAuthController extends Controller
     }
 
 
-    public function checkLogin(Request $request)
-{
-    $user = $request->input('username');
-    $password = $request->input('password');
-    $check = User::where('user_name', $user)->first();
+    public function checkLogin(Request $request){
+    // $user = $request->input('username');
+    // $password = $request->input('password');
+    // $check = User::where('user_name', $user)->first();
     
-    if($check){
+    // if($check){
         
-            $request->session()->put('loginId', $check->id);
-            return redirect('dashboard');
+    //         $request->session()->put('loginId', $check->id);
+    //         return redirect('dashboard');
         
-    } else {
-        return back()->with('fail','This username is not registered.');
-    }       
+    // } else {
+    //     return back()->with('fail','This username is not registered.');
+    // }       
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user = $request->input('username');
+        $password = $request->input('password');
+        $check = User::where('user_name', $user)->first();
+        
+        if($check){
+            if(Hash::check($password, $check->password)){
+                $request->session()->put('loginId', $check->id);
+                return redirect('dashboard');
+            } else {
+                return back()->with('fail', 'Incorrect Credentials!! Please Check');
+            }
+        } else {
+            return back()->with('fail', 'User Not Found Please Register The User');
+        }       
 }
 
 

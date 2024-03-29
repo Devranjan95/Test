@@ -22,14 +22,18 @@ use App\Models\RadioCount;
 
 use App\Models\OtherCount;
 use App\Models\Narration;
+use Session;
 
 class RegistrationController extends Controller
 {
     // *********************TEST CATEGORY MASTER***********************************
     public function registraion(){
-        
-        $testcatname = TestCategory::where('status','!=','Deleted')->where('status','!=','Inactive')->pluck('test_category_name','id');
-        return view('backend.registration',['testcatname'=>$testcatname]);
+        // print_r(Session::has('loginId'));
+        // exit;
+        if(Session::has('loginId')){
+            $testcatname = TestCategory::where('status','!=','Deleted')->where('status','!=','Inactive')->pluck('test_category_name','id');
+            return view('backend.registration',['testcatname'=>$testcatname]);
+        }
     }
 // *************************************************************
 

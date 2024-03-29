@@ -303,9 +303,17 @@
 </html>
 <script>
  
-  function logout(){
-    window.location.href = '{{ url("login") }}';
-  }
+ function logout() {
+        // Assuming you're using jQuery
+        $.ajax({
+            url: '/logout', // Replace with your logout route
+            type: 'GET', // or 'GET' depending on your logout route setup
+            success: function(response) {
+                // Redirect to login page after logout
+                window.location.href = '/login'; // Replace with your login page URL
+            }
+        });
+    }
   function deleteData(delurl){
     //alert(delurl);
     if(confirm("Are you very sure you want to delete this")){

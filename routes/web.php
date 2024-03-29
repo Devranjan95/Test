@@ -69,20 +69,28 @@ Route::get('user/edit/{id}', [UserController::class, 'getUser']);
 Route::get('user/delete/{id}', [UserController::class, 'deleteUser']);
 
 
-//Route::middleware('auth')->group(function () {
-    // routes that require authentication
-    //::get('/dashboard', [DashboardController::class,'index'])->name('dashboard')->middleware('auth');
-//});
+Route::middleware(['isLoggedIn'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('registration',[RegistrationController::class,'registraion'])->name('registration');
+    Route::get('testcategory', [TestmasterController::class, 'testCategory'])->name('testcategory');
+    Route::get('testsubcategory', [TestmasterController::class, 'testSubCategory'])->name('testsubcategory');
+    Route::get('testentry',[TestmasterController::class,'getTestData'])->name('testentry');
+    Route::get('printpage/printbill/{patid}', [PrintRegistrationController::class, 'PrintBill'])->name('printbill');
+    // Add more authenticated routes here
+});
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('isLoggedIn');
+//Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('isLoggedIn');
     // Add more authenticated routes here
 
-// Your login route
-// Route::get('/login', [LoginAuthController::class,'index'])->name('login');
-// Route::post('/login', [LoginAuthController::class,'checkLogin'])->name('login.check');
-
-Route::get('/login', [LoginAuthController::class, 'index'])->name('login')->middleware('alreadyLoggedIn');
-Route::post('/login', [LoginAuthController::class, 'checkLogin']);
+//Route::get('/login', [LoginAuthController::class, 'index'])->name('login')->middleware('alreadyLoggedIn');
+//Route::post('/login', [LoginAuthController::class, 'checkLogin']);
 //Auth::routes();
+
+Route::middleware(['alreadyLoggedIn'])->group(function () {
+    Route::get('/login', [LoginAuthController::class, 'index'])->name('login');
+    Route::post('/login', [LoginAuthController::class, 'checkLogin']);
+});
+
+Route::get('/logout', [LoginAuthController::class, 'logout'])->name('logout');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
